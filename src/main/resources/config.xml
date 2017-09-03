@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <table name="test" batch="1000">
+        <column name="type1">工具书分类</column>
+        <column name="title">提名</column>
+        <column name="type2">地名</column>
+        <column name="topic">学科主题词</column>
+        <column name="content">条目</column>
+        <column name="description">释文</column>
+    </table>
+</config>
