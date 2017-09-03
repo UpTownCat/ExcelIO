@@ -7,12 +7,15 @@ package com.example.bean;
 public class Configuration {
     //对应的数据表
     private Table table;
+    //数据库相关信息
+    private DB db;
 
     public Configuration() {
     }
 
-    public Configuration(Table table) {
+    public Configuration(Table table, DB db) {
         this.table = table;
+        this.db = db;
     }
 
     public Table getTable() {
@@ -21,5 +24,13 @@ public class Configuration {
 
     public void setTable(Table table) {
         this.table = table;
+    }
+
+    public DB getDb() {
+        return db;
+    }
+
+    public void setDb(DB db) {
+        this.db = db;
     }
 }

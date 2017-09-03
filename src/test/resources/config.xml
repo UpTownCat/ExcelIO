@@ -8,4 +8,11 @@
         <column name="content">条目</column>
         <column name="description">释文</column>
     </table>
+
+    <db>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>mysql:jdbc://localhost:3306/excel_db</url>
+        <username>root</username>
+        <password>password</password>
+    </db>
 </config>

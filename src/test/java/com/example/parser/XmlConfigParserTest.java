@@ -2,6 +2,7 @@ package com.example.parser;
 
 import com.example.bean.Column;
 import com.example.bean.Configuration;
+import com.example.bean.DB;
 import org.junit.Test;
 
 import java.io.FileInputStream;
@@ -26,5 +27,7 @@ public class XmlConfigParserTest {
             Column column = columns.get(i);
             System.out.println("name : " + column.getName() + " , value : " + column.getValue());
         }
+        DB db = configuration.getDb();
+        System.out.println(db);
     }
 }
