@@ -24,5 +24,14 @@ public class DefaulExcelParserTest {
             System.out.print("title = " + title + "  ");
         }
         System.out.println();
+        List<List<String>> rows = excel.getRows();
+        for (int i = 0; i < rows.size(); i++) {
+            List<String> row = rows.get(i);
+            for(int j = 0; j < row.size(); j++) {
+                String v = row.get(j);
+                System.out.print(v + "   ");
+            }
+            System.out.println();
+        }
     }
 }

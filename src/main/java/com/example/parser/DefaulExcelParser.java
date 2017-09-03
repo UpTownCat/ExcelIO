@@ -31,15 +31,13 @@ public class DefaulExcelParser implements ExcelParser {
             workbook = new HSSFWorkbook(inputStream);
         }
         Sheet sheet = workbook.getSheetAt(0);
+        //获得总行数
+        int totalRows = sheet.getLastRowNum();
         Row row = sheet.getRow(0);
         //获得列数
         int colNum = row.getLastCellNum();
-        List<String> title = new ArrayList<>();
-        for (int i = 0; i < colNum; i++) {
-            String titleStr = getCellFormatValue(row.getCell(i));
-            title.add(titleStr);
-        }
-        return new Excel("", title, null, 0, colNum);
+
+        return new Excel("", parseTitles(row), parseRows(sheet), totalRows, colNum);
     }
 
     /**
@@ -91,11 +89,39 @@ public class DefaulExcelParser implements ExcelParser {
 
     }
 
-    public List<String> parseTitle() {
-        return null;
+    /**
+     * 解析列标题
+     * @param row
+     * @return
+     */
+    public List<String> parseTitles(Row row) {
+        int colNum = row.getLastCellNum();
+        List<String> titles = new ArrayList<>();
+        for (int i = 0; i < colNum; i++) {
+            String titleStr = getCellFormatValue(row.getCell(i));
+            titles.add(titleStr);
+        }
+        return titles;
     }
 
-    public List<List<String>> parseRows() {
-        return null;
+    /**
+     * 解析内容
+     * @param sheet
+     * @return
+     */
+    public List<List<String>> parseRows(Sheet sheet) {
+        int total = sheet.getLastRowNum();
+        List<List<String>> rows = new ArrayList<>();
+        for(int i = 1; i <= 1000; i++) {
+            Row row = sheet.getRow(i);
+            int colNum = row.getLastCellNum();
+            List<String> rowValue = new ArrayList<>();
+            for (int j = 0; j < colNum; j++) {
+                String value = getCellFormatValue(row.getCell(j));
+                rowValue.add(value);
+            }
+            rows.add(rowValue);
+        }
+        return rows;
     }
 }
