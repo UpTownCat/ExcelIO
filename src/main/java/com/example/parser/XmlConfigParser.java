@@ -10,6 +10,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,6 +26,11 @@ public class XmlConfigParser implements ConfigParser {
         SAXReader reader = new SAXReader();
         Document document = reader.read(inputStream);
         Element root = document.getRootElement();
+        try {
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return new Configuration(parseTable(root), parseDB(root));
     }
     //解析table节点
