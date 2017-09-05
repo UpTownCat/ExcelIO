@@ -121,7 +121,8 @@ public class Excel {
      * @param row
      * @return
      */
-    public List<String> getTitles(Row row) {
+    public List<String> getTitles() {
+        Row row = sheet.getRow(0);
         int colNum = row.getLastCellNum();
         List<String> titles = new ArrayList<>();
         for (int i = 0; i < colNum; i++) {
