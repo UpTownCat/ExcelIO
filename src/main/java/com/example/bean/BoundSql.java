@@ -30,7 +30,7 @@ public class BoundSql {
     }
 
     public String getInsertSql() {
-        return insertSql;
+        return  insertSql;
     }
 
     public void setInsertSql(String insertSql) {
@@ -58,7 +58,7 @@ public class BoundSql {
      * 构造批量导入的sql
      * @return
      */
-    public String createInsertSql() {
+    public String createInsertSql(List<List<String>> rows) {
         Integer bacth = table.getBacth();
         String tableName = table.getName();
         List<Column> columns = table.getColumns();
@@ -75,7 +75,7 @@ public class BoundSql {
         }
         sb.append(") values");
         //设置值
-        List<List<String>> rows = excel.getRows();
+//         = excel.getRows();
         for(int i = 0; i < rows.size(); i++) {
             List<String> row = rows.get(i);
             sb.append(" (");
