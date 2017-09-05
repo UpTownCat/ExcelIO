@@ -15,7 +15,6 @@ public class JdbcUtil {
 
     /**
      * 获取连接
-     * @param db
      * @return
      * @throws SQLException
      */

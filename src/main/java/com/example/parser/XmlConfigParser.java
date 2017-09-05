@@ -43,7 +43,8 @@ public class XmlConfigParser implements ConfigParser {
             Element columnNode = (Element)columnIterator.next();
             String name = columnNode.attributeValue("name");
             String value = columnNode.getTextTrim();
-            Column column = new Column(name, value);
+            String type = columnNode.attributeValue("type");
+            Column column = new Column(name, value, type);
             columns.add(column);
         }
         //解析table

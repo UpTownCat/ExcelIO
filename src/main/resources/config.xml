@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <config>
     <table name="test" batch="1000">
-        <column name="type1">工具书分类</column>
-        <column name="title">提名</column>
-        <column name="type2">地名</column>
-        <column name="topic">学科主题词</column>
-        <column name="content">条目</column>
-        <column name="description">释文</column>
+        <column name="type1" type="string">工具书分类</column>
+        <column name="title" type="string">提名</column>
+        <column name="type2" type="string">地名</column>
+        <column name="topic" type="string">学科主题词</column>
+        <column name="content" type="string">条目</column>
+        <column name="description" type="string">释文</column>
     </table>
 
     <db>
         <driver>com.mysql.jdbc.Driver</driver>
-        <url>mysql:jdbc://localhost:3306/excel_db</url>
+        <url>jdbc:mysql://localhost:3306/excel_db?ScharacterEncoding=utf8</url>
         <username>root</username>
-        <password>password</password>
+        <password>root</password>
     </db>
 </config>
