@@ -11,6 +11,7 @@ import com.example.parser.ExcelParser;
 import com.example.parser.XmlConfigParser;
 import com.example.util.JdbcUtil;
 import org.dom4j.DocumentException;
+import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -42,6 +43,14 @@ public class AppTest{
         boundSql.setExcel(excel);
         Connection connection = JdbcUtil.getConnection(configuration.getDb());
         Executor executor = new BatchExecutor();
-        executor.execute(boundSql, connection);
+        for (int i = 1; i < 70; i++) {
+            executor.execute(boundSql, connection, excel.getPages(i, configuration.getTable().getBacth()));
+        }
+    }
+    @Test
+    public void testStringBuffer() {
+        StringBuffer sb = new StringBuffer("jlkjlf");;
+        sb.append("hello, world");
+        System.out.println(sb.substring(0,sb.length() - 1).toString());
     }
 }

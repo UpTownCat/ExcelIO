@@ -3,7 +3,6 @@ package com.example.bean;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Administrator on 2017/9/4.
@@ -13,12 +12,27 @@ public class BoundSql {
     private Table table;
     private Excel excel;
 
+    public Table getTable() {
+        return table;
+    }
+
+    public void setTable(Table table) {
+        this.table = table;
+    }
+
+    public Excel getExcel() {
+        return excel;
+    }
+
+    public void setExcel(Excel excel) {
+        this.excel = excel;
+    }
+
     /**
      * 构造批量导入的sql
      * @return
      */
     public String createInsertSql(List<List<String>> rows) {
-        Integer bacth = table.getBacth();
         String tableName = table.getName();
         List<Column> columns = table.getColumns();
         StringBuffer sb = new StringBuffer("insert into " + tableName);
@@ -28,7 +42,7 @@ public class BoundSql {
             Column column = columns.get(i);
             sb.append(column.getName() + ",");
         }
-        sb.substring(0, sb.length() - 1);
+        sb = new StringBuffer(sb.substring(0, sb.length() - 1));
         sb.append(") values");
         //设置值
         for(int i = 0; i < rows.size(); i++) {
@@ -38,9 +52,10 @@ public class BoundSql {
                 sb.append("'" +row.get(j) + "'" + ",");
 
             }
-            sb.substring(0, sb.length() - 1);
+            sb = new StringBuffer(sb.substring(0, sb.length() - 1));
             sb.append("),");
         }
+        sb = new StringBuffer(sb.substring(0, sb.length() - 1));
         return sb.toString();
     }
 
@@ -81,7 +96,7 @@ public class BoundSql {
         for(int i = 0; i < columns.size(); i++) {
             sb.append(columns.get(i).getName() + "=" + row.get(i) + ",");
         }
-        sb.substring(0, sb.length() - 1);
+        sb = new StringBuffer(sb.substring(0, sb.length() - 1));
         sb.append(mapToCondictionStr(condictions));
         return sb.toString();
     }
