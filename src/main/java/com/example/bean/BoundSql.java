@@ -80,7 +80,7 @@ public class BoundSql {
      * @return
      */
     public String createSelectSql(Map<String, String> condictions) {
-        StringBuffer sb = new StringBuffer("select count(1) from " + table.getName() + "where ");
+        StringBuffer sb = new StringBuffer("select count(1) from " + table.getName() + " where ");
         return sb.append(mapToCondictionStr(condictions)).toString();
     }
 
@@ -91,12 +91,13 @@ public class BoundSql {
      * @return
      */
     public String createUpdateSql(List<String> row, Map<String, String> condictions) {
-        StringBuffer sb = new StringBuffer("update " + table.getName() + " set");
+        StringBuffer sb = new StringBuffer("update " + table.getName() + " set ");
         List<Column> columns = table.getColumns();
         for(int i = 0; i < columns.size(); i++) {
-            sb.append(columns.get(i).getName() + "=" + row.get(i) + ",");
+            sb.append(columns.get(i).getName() + "='" + row.get(i) + "',");
         }
         sb = new StringBuffer(sb.substring(0, sb.length() - 1));
+        sb.append(" where ");
         sb.append(mapToCondictionStr(condictions));
         return sb.toString();
     }

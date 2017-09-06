@@ -33,19 +33,19 @@ public class AppTest{
      */
     @org.junit.Test
     public void test() throws IOException, DocumentException, SQLException {
-        InputStream inputStream = new FileInputStream("E:\\test\\ExcelIO\\src\\main\\resources\\config.xml");
-        ConfigParser parser = new XmlConfigParser();
-        Configuration configuration = parser.parse(inputStream);
-        ExcelParser parser2 = new DefaulExcelParser();
-        Excel excel = parser2.parse(new FileInputStream("D:\\Downloads\\中国历史地名大辞典_工具书.xlsx"));
-        BoundSql boundSql = new BoundSql();
-        boundSql.setTable(configuration.getTable());
-        boundSql.setExcel(excel);
-        Connection connection = JdbcUtil.getConnection(configuration.getDb());
-        Executor executor = new BatchExecutor();
-        for (int i = 1; i < 70; i++) {
-            executor.execute(boundSql, connection, excel.getPages(i, configuration.getTable().getBacth()));
-        }
+//        InputStream inputStream = new FileInputStream("E:\\test\\ExcelIO\\src\\main\\resources\\config.xml");
+//        ConfigParser parser = new XmlConfigParser();
+//        Configuration configuration = parser.parse(inputStream);
+//        ExcelParser parser2 = new DefaulExcelParser();
+//        Excel excel = parser2.parse(new FileInputStream("D:\\Downloads\\中国历史地名大辞典_工具书.xlsx"));
+//        BoundSql boundSql = new BoundSql();
+//        boundSql.setTable(configuration.getTable());
+//        boundSql.setExcel(excel);
+//        Connection connection = JdbcUtil.getConnection(configuration.getDb());
+//        Executor executor = new BatchExecutor();
+//        for (int i = 1; i < 70; i++) {
+//            executor.execute(boundSql, connection, excel.getPages(i, configuration.getTable().getBacth()));
+//        }
     }
     @Test
     public void testStringBuffer() {
