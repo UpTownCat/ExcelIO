@@ -10,6 +10,11 @@ import java.io.InputStream;
  * 配置文件转换接口
  */
 public interface ConfigParser {
-    //转换为configuration对象
+    /**
+     * 转换为configuration对象
+     * @param inputStream
+     * @return
+     * @throws DocumentException
+     */
     public Configuration parse(InputStream inputStream) throws DocumentException;
 }

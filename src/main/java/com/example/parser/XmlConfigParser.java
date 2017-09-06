@@ -21,6 +21,13 @@ import java.util.List;
  * xml文件解析器
  */
 public class XmlConfigParser implements ConfigParser {
+
+    /**
+     * 解析xml
+     * @param inputStream
+     * @return
+     * @throws DocumentException
+     */
     @Override
     public Configuration parse(InputStream inputStream) throws DocumentException {
         SAXReader reader = new SAXReader();

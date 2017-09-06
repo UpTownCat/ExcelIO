@@ -32,6 +32,7 @@ public class BatchExecutor implements Executor{
         int result = statement.executeUpdate(boundSql.createInsertSql(rows));
         long end = System.currentTimeMillis();
         System.out.println("成功写入" + result + "条数据， 耗时" + (end - start) + "毫秒。");
+        rows = null;
         try {
 
         }finally {

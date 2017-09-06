@@ -20,6 +20,12 @@ import java.util.List;
  * 默认的解析器
  */
 public class DefaulExcelParser implements ExcelParser {
+    /**
+     * 解析Excel
+     * @param inputStream
+     * @return
+     * @throws IOException
+     */
     @Override
     public Excel parse(InputStream inputStream) throws IOException {
 //        Workbook

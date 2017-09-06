@@ -27,4 +27,18 @@ public class JdbcUtil {
         Connection connection = DriverManager.getConnection(db.getUrl(), db.getUsername(), db.getPassword());
         return connection;
     }
+
+    /**
+     * 关闭连接
+     * @param connection
+     */
+    public static final void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
